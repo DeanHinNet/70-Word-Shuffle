@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>SCRATCH</title>
+	<style>
+		p {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class='wrapper'>
+		<input type='text' id='input'>
+		<button id='button_shuffle'>SHUFFLE</button>
+		<p id='output'>HELLO WORLD</p>
+	</div>
+</body>
+<script>
+	var words = document.getElementById('output');
+	var shuffled = "";
+	var user_input = document.getElementById('input');
+	function shuffleWord(entry){
+		var a = entry.split(""),
+		n = a.length;
+
+		for(var i=n-1; i>0; i--){
+			var j = Math.floor(Math.random() *(i+1));
+			var tmp = a[i];
+			a[i] = a[j];
+			a[j] = tmp;
+		}
+		return a.join("");
+	}
+
+	function shuffleSentence(sen){
+		var a = sen.split(" "),
+		n = a.length;
+
+		for(var i=0; i<n; i++){
+			a[i] = shuffleWord(a[i]);
+		}
+
+		return a.join(" ");
+	}
+
+	shuffled = shuffleSentence(words.innerHTML);
+	document.getElementById('output').innerHTML = shuffled;
+	
+	document.getElementById('button_shuffle').addEventListener('click',function(){
+
+	});
+	
+	// document.getElementById('input').addEventListener("keyup",
+
+	// });
+
+	
+</script>
+</html>
